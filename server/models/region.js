@@ -5,10 +5,12 @@ module.exports = (sequelize, DataTypes) => {
   }, {  timestamps: false
   });
   Region.associate = function(models) {
-    Region.belongsTo(models.Composition, {
+    
+    Region.belongsTo(models.Area, {
       foreignKey: 'regionId',
       onDelete: 'CASCADE',
     });
+    
   };
   return Region;
 };

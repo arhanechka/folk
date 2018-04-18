@@ -1,19 +1,19 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Genres', {
+    return queryInterface.createTable('Regions', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      genre_title: {
+      region_name: {
         type: Sequelize.STRING
-      }
+      }      
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Genres');
+    return queryInterface.dropTable('Regions');
   }
 };

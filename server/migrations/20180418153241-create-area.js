@@ -10,6 +10,15 @@ module.exports = {
       },
       area_name: {
         type: Sequelize.STRING
+      },
+      regionId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Region',
+          key: 'id',
+          as: 'regionId',
+        }
       }
     });
   },

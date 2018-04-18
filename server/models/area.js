@@ -6,10 +6,9 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false
   });
   Area.associate = (models) => {
-      Area.hasMany(models.Region);
-      Area.belongsTo(models.Composition, {
-        foreignKey: 'areaId',
-        onDelete: 'CASCADE',
+  
+      Area.hasMany(models.Region, {
+        foreignKey: 'regionId'
       });
   };
   return Area;
