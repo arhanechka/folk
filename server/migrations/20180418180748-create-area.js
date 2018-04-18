@@ -11,13 +11,20 @@ module.exports = {
       area_name: {
         type: Sequelize.STRING
       },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
       regionId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
         references: {
           model: 'Region',
-          key: 'id',
-          as: 'regionId',
+          key: 'id'
         }
       }
     });
