@@ -1,23 +1,22 @@
-const express = require('express');
-const logger = require('morgan');
-const bodyParser = require('body-parser');
 
-// Set up the express app
-const app = express();
+var express = require('express');
+var app = express();
+const router = require('./routes');
+const dispatcher = require('./dispatcher');
+const bodyParser = require('body-parser')
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true})) 
+dispatcher(app);
 
-// Log requests to the console.
-app.use(logger('dev'));
+app.use('/', router)
 
-// Parse incoming requests data (https://github.com/expressjs/body-parser)
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-require('./server/routes')(app);
-// Setup a default catch-all route that sends back a welcome message in JSON format.
-app.get('*', (req, res) => res.status(200).send({
-  message: 'Welcome to the beginning of nothingness.',
-}));
+// app.get('/test/:id', (req, res)=>{
+//     let id = req.param.id;
+//     res.send({test1: 'test1'+id})
+// });
 
+// app.all('*', (req,res) =>{
+//     res.send('<h1>Hellouysche!</h1>')
+// });
 
-module.exports = app;
-
-module.exports = app;
+app.listen(8080, ()=> console.log("Server created, port 8080"))
